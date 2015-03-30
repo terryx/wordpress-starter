@@ -1,0 +1,7 @@
+- hosts: wordpress
+  user: grabtaxi
+  sudo: yes
+  tasks:
+   - name: git clone/pull
+     git: repo={{repo}} dest={{ code_dir }}/{{usergroup}}/wp-content/themes
+          accept_hostkey=true key_file=/home/{{usergroup}}/.ssh/id_rsa version={{env}} remote=origin

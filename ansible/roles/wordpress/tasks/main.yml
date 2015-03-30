@@ -1,0 +1,22 @@
+---
+ - name: download wordpress
+   get_url: url=http://wordpress.org/wordpress-{{ wp_version }}.tar.gz dest={{ code_dir }}/{{usergroup}}-{{ wp_version }}.tar.gz
+           sha256sum="{{ wp_sha256sum }}"
+
+ - name: extract archive
+   command: chdir={{ code_dir }}/ /bin/tar xvf wordpress-{{ wp_version }}.tar.gz creates={{ code_dir }}/{{usergroup}}
+
+ - name: copy wordpress config file
+   template: src=wp-config.php dest={{ code_dir }}/{{usergroup}}/
+
+ - name: change ownership of wordpress installation
+   file: path={{ code_dir }}/{{usergroup}}/ owner={{usergroup}} group={{usergroup}} state=directory recurse=yes
+
+ - name: remove default themes directory
+   file: path={{ code_dir }}/{{usergroup}}/wp-content/themes state=absent
+
+ - name: make sure user has permission to write
+   file: path={{ code_dir}}/{{usergroup}}/wp-content state=directory group=www-data
+
+ - name: create uploads directory for the web
+   file: path={{ code_dir}}/{{usergroup}}/wp-content/uploads state=directory group=www-data

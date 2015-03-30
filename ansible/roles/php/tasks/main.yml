@@ -1,0 +1,9 @@
+---
+ - name: common php packages
+   action: apt pkg={{ item }} state=latest
+   with_items:
+     - php5-gd
+     - libssh2-php
+     - php5-fpm
+     - php5-mysql
+     - php5-curl

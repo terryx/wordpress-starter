@@ -1,0 +1,14 @@
+---
+ansible_ssh_user: vagrant
+ansible_ssh_port: 2222
+ansible_ssh_host: 127.0.0.1
+ansible_ssh_private_key_file: ~/.vagrant.d/insecure_private_key
+
+repo: YOU GIT REPO HERE
+usergroup: wordpress
+env: develop
+code_dir: /home
+
+#wordpress settings
+wp_version: 4.1
+wp_sha256sum: 3743d82698571903382dc223940e712f7bb5cfd20cedba7b7c32c97d470defab

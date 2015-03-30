@@ -1,0 +1,15 @@
+---
+ansible_ssh_user: ubuntu
+ansible_ssh_port: 22
+ansible_ssh_host: IP ADDRESS HERE
+#ansible_ssh_password: 
+#ansible_ssh_private_key_file: 
+
+repo: YOU GIT REPO HERE
+usergroup: wordpress
+env: master
+code_dir: /home
+
+#wordpress settings
+wp_version: 4.1
+wp_sha256sum: 3743d82698571903382dc223940e712f7bb5cfd20cedba7b7c32c97d470defab

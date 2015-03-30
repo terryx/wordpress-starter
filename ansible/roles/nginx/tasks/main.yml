@@ -1,0 +1,15 @@
+---
+ - name: install nginx
+   apt: name=nginx-full
+
+ - name: remove the default nginx site
+   file: path=/etc/nginx/sites-enabled/default state=absent
+
+ - name: copy the nginx sites-available
+   template: src=conf.j2 dest=/etc/nginx/sites-available/{{usergroup}} owner=root group=root mode=644
+
+ - name: symlink the nginx site-enabled
+   file: src=/etc/nginx/sites-available/wordpress dest=/etc/nginx/sites-enabled/{{usergroup}} state=link
+
+ - name: restart nginx
+   service: name=nginx state=restarted
