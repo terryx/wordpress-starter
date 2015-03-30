@@ -1,5 +1,5 @@
 - hosts: wordpress
-  user: grabtaxi
+  user: {{usergroup}}
   sudo: yes
   tasks:
    - name: git clone/pull
